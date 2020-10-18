@@ -3,7 +3,7 @@ import {RootState} from 'typesafe-actions';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { listProducts } from '../../reducers/actions';
+import { listProducts } from '../../reducers/products/actions';
 
 const ProductWrapper = styled.ul`
     display: flex;
