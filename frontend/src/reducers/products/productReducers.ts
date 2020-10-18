@@ -1,3 +1,4 @@
+import { IProduct } from '../../interfaces/entities';
 
 import {
   PRODUCT_LIST_PENDING,
@@ -8,7 +9,18 @@ import {
   PRODUCT_DETAILS_ERROR
 } from "./actionType";
 
-function productListReducer(state = {products: []}, action:any) {
+type ProductListAction =
+  | { type: 'PRODUCT_LIST_PENDING' }
+  | { type: 'PRODUCT_LIST_SUCCESS'; payload: IProduct[] }
+  | { type: 'PRODUCT_LIST_ERROR'; payload: {} };
+
+type ProductDetailAction =
+  | { type: 'PRODUCT_DETAILS_PENDING' }
+  | { type: 'PRODUCT_DETAILS_SUCCESS'; payload: IProduct }
+  | { type: 'PRODUCT_DETAILS_ERROR'; payload: {}};
+
+
+function productListReducer(state = {products: []}, action:ProductListAction) {
     switch (action.type) {
         case PRODUCT_LIST_PENDING:
             return { loading: true };
@@ -21,7 +33,7 @@ function productListReducer(state = {products: []}, action:any) {
     }
 }
 
-function productDetailsReducer(state = {product: {}}, action:any) {
+function productDetailsReducer(state = {product: {}}, action:ProductDetailAction) {
     switch (action.type) {
         case PRODUCT_DETAILS_PENDING:
             return { loading: true };

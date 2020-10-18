@@ -1,9 +1,10 @@
 import React, {  useEffect } from 'react';
-import {RootState} from 'typesafe-actions';
+import { RootState } from 'typesafe-actions';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { listProducts } from '../../reducers/products/actions';
+import { IProduct } from '../../interfaces/entities';
 
 const ProductWrapper = styled.ul`
     display: flex;
@@ -28,7 +29,7 @@ function Home(){
     error ? <div>{error}</div> :
         <ProductWrapper>
                 {
-                    products.map((product:any) => 
+                    products.map((product:IProduct) => 
                       <li style={{ listStyleType: "none"}} key={product._id}>
                         <div className="product">
                             <Link to={`/product/${product._id}`} href="!#">
