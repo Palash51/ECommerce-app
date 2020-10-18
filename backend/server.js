@@ -1,6 +1,3 @@
-// import  data  from './data'
-
-
 const data = {
     products: [
         {
