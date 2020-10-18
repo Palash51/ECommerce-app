@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import {RootState} from 'typesafe-actions';
+import { History, LocationState } from "history";
 import styled from 'styled-components';
 
-import data from 'src/data';
+import { detailsProduct } from '../../reducers/products/actions'
 import { Link } from 'react-router-dom';
+
 
 interface IProps {
     match: {
@@ -10,6 +14,7 @@ interface IProps {
             id: string
         }
     }
+    history: History<LocationState>;
 }
 
 const Wrapper = styled.div`
@@ -77,13 +82,35 @@ const CartButtonWrapper = styled.button`
 
 
 function Product(props:IProps){
-    const product = data.products.find(product => product._id === props.match.params.id)
-    console.log(product)
+    const [qty, setQty] =  useState(1);
+    const productDetails =  useSelector((state:RootState) => state.productDetails);
+    const { product, loading, error} = productDetails;
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(detailsProduct(props.match.params.id));
+        return () => {
+            //
+        }
+    }, [])
+
+    const updateQuantity = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setQty(Number(e.target.value))
+    }
+
+    const handleAddToCart = () => {
+        props.history.push("/cart/" + props.match.params.id + "?qty" + qty)
+    }
+
     return (
+    
     <Wrapper>
         <BackLinkWrapper>
             <Link to="/">Back to result</Link>
         </BackLinkWrapper>
+    {loading ? <div>loading...</div> : 
+    error ? <div>{error}</div> : 
+    (
         <ProductDetailWrapper>
             <ProductImageWrapper>
                 <img src={product?.image} alt="product" ></img>
@@ -114,22 +141,27 @@ function Product(props:IProps){
                             Price: {product?.price}
                         </li>
                         <li>
-                            Status: {product?.price}
+                            Status: {product.countInStock > 0 ? "In Stock" : "Out of stock"}
                         </li>
                         <li>
-                            Qty: <select>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
+                            {/* TODO: Need to remove downlevelIteration */}
+                            Qty: <select value={qty} onChange={(e) => updateQuantity(e)}>
+                            {[...Array(product.countInStock).keys()].map((x) => (
+                            <option key={x + 1} value={x + 1}>
+                                {x + 1}
+                            </option>
+                            ))}
                             </select>
                         </li>
+                        
                         <li style={{ display:'flex', flexDirection: 'column'}}>
-                            <CartButtonWrapper>Add to cart</CartButtonWrapper>
+                        {product.countInStock > 0 &&  <CartButtonWrapper onClick={handleAddToCart}>Add to cart</CartButtonWrapper>}
                         </li>
+                        
                     </ul>
             </ProductActionWrapper>
         </ProductDetailWrapper>
+        )}
     </Wrapper>
     );
 }
