@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
-import data from '../../data'
+// import data from '../../data'
 import styled from 'styled-components';
+import { IProduct } from '../../interfaces/entities';
 
 const ProductWrapper = styled.ul`
     display: flex;
@@ -11,13 +13,26 @@ const ProductWrapper = styled.ul`
 `;
 
 function Home(){
+
+    const [products, setProducts] =  useState<IProduct[]>([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const { data } = await axios.get('/api/products');
+            setProducts(data)
+        }
+        fetchData();
+        return () => { 
+        }
+    }, [])
+
     return (
         <ProductWrapper>
                 {
-                    data.products.map(product => 
-                      <li style={{ listStyleType: "none"}}>
+                    products.map(product => 
+                      <li style={{ listStyleType: "none"}} key={product._id}>
                         <div className="product">
-                            <Link to={`/product/${product._id}`}>
+                            <Link to={`/product/${product._id}`} href="!#">
                                 <img className="product-image" src={product.image} alt="products" />
                             </Link>
                             <div className="product-name">
