@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, {  useEffect } from 'react';
+import {RootState} from 'typesafe-actions';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-// import data from '../../data'
 import styled from 'styled-components';
-import { IProduct } from '../../interfaces/entities';
+import { listProducts } from '../../reducers/actions';
 
 const ProductWrapper = styled.ul`
     display: flex;
@@ -13,23 +13,22 @@ const ProductWrapper = styled.ul`
 `;
 
 function Home(){
-
-    const [products, setProducts] =  useState<IProduct[]>([]);
+    const productList =  useSelector((state:RootState) => state.productList);
+    const { products, loading, error } = productList;
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        const fetchData = async () => {
-            const { data } = await axios.get('/api/products');
-            setProducts(data)
-        }
-        fetchData();
+        dispatch(listProducts());
         return () => { 
         }
     }, [])
 
     return (
+        loading ? <div>loading...</div> :
+    error ? <div>{error}</div> :
         <ProductWrapper>
                 {
-                    products.map(product => 
+                    products.map((product:any) => 
                       <li style={{ listStyleType: "none"}} key={product._id}>
                         <div className="product">
                             <Link to={`/product/${product._id}`} href="!#">
