@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Link } from 'react-router-dom';
 
 import  Home from './Home'
 import Product from './Product';
+import Cart from './Cart';
 
 function Base() {
 
@@ -44,6 +45,7 @@ function Base() {
         <main className="main">
             <div className="content">
             <Route path="/product/:id" exact={true} component={Product} />
+            <Route path="/cart/:id?" exact={true} component={Cart} />
             <Route path="/" exact={true} component={Home} />
             </div>
         </main>

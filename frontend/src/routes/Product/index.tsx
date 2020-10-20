@@ -99,7 +99,7 @@ function Product(props:IProps){
     }
 
     const handleAddToCart = () => {
-        props.history.push("/cart/" + props.match.params.id + "?qty" + qty)
+        props.history.push("/cart/" + props.match.params.id + "?qty=" + qty)
     }
 
     return (
@@ -145,7 +145,7 @@ function Product(props:IProps){
                         </li>
                         <li>
                             {/* TODO: Need to remove downlevelIteration */}
-                            Qty: <select value={qty} onChange={(e) => updateQuantity(e)}>
+                            Quantity: <select value={qty} onChange={(e) => updateQuantity(e)} >
                             {[...Array(product.countInStock).keys()].map((x) => (
                             <option key={x + 1} value={x + 1}>
                                 {x + 1}

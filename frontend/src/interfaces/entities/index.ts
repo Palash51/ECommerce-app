@@ -1,3 +1,5 @@
+import {Action} from 'redux';
+
 export interface IUser {
     firstName: string;
     lastName: string;
@@ -15,4 +17,14 @@ export interface IProduct {
     rating: number;
     numReviews: number;
     countInStock: number;
+}
+
+
+
+
+export default interface IAction<T> extends Action<string> {
+    type: string;
+    payload?: T;
+    error?: boolean;
+    meta?: any;
 }

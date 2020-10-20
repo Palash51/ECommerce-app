@@ -11,7 +11,7 @@ const listProducts = () => async (dispatch:Dispatch<AnyAction>) => {
 
     try {
         dispatch({ type: PRODUCT_LIST_PENDING });
-        const { data } = await axios.get("api/products");
+        const { data } = await axios.post("api/products");
         dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data })
     } catch (error) {
         dispatch({ type: PRODUCT_LIST_ERROR, payload: error.message });
@@ -22,7 +22,7 @@ const listProducts = () => async (dispatch:Dispatch<AnyAction>) => {
 const detailsProduct = (productId: string) => async (dispatch:Dispatch<AnyAction>) => {
     try {
         dispatch({ type: PRODUCT_DETAILS_PENDING, payload: productId });
-        const { data } = await axios.get("/api/products/" + productId);
+        const { data } = await axios.post("/api/products/" + productId);
         dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data })
     } catch (error) {
         dispatch({ type: PRODUCT_DETAILS_ERROR, payload: error.message });
