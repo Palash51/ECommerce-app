@@ -1,0 +1,190 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home component Should match snapshot 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <BrowserRouter>
+    <Router
+      history={
+        Object {
+          "action": "POP",
+          "block": [Function],
+          "createHref": [Function],
+          "go": [Function],
+          "goBack": [Function],
+          "goForward": [Function],
+          "length": 1,
+          "listen": [Function],
+          "location": Object {
+            "hash": "",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+          "push": [Function],
+          "replace": [Function],
+        }
+      }
+    >
+      <Home>
+        <styled.ul>
+          <ul
+            className="sc-bdnylx jVRekd"
+          >
+            <li
+              key="1"
+              style={
+                Object {
+                  "listStyleType": "none",
+                }
+              }
+            >
+              <div
+                className="product"
+              >
+                <Link
+                  href="!#"
+                  to="/product/1"
+                >
+                  <LinkAnchor
+                    href="/product/1"
+                    navigate={[Function]}
+                  >
+                    <a
+                      href="/product/1"
+                      onClick={[Function]}
+                    >
+                      <img
+                        alt="products"
+                        className="product-image"
+                        src="/images/d1.jpg"
+                      />
+                    </a>
+                  </LinkAnchor>
+                </Link>
+                <div
+                  className="product-name"
+                >
+                  <Link
+                    to="/product/1"
+                  >
+                    <LinkAnchor
+                      href="/product/1"
+                      navigate={[Function]}
+                    >
+                      <a
+                        href="/product/1"
+                        onClick={[Function]}
+                      >
+                        Slim Shirts
+                      </a>
+                    </LinkAnchor>
+                  </Link>
+                </div>
+                <div
+                  className="product-brand"
+                >
+                  Nike
+                </div>
+                <div
+                  className="product-price"
+                >
+                  60
+                </div>
+                <div
+                  className="product-rating"
+                >
+                  4.5
+                   stars (
+                  10
+                   Reviews)
+                </div>
+              </div>
+            </li>
+            <li
+              key="2"
+              style={
+                Object {
+                  "listStyleType": "none",
+                }
+              }
+            >
+              <div
+                className="product"
+              >
+                <Link
+                  href="!#"
+                  to="/product/2"
+                >
+                  <LinkAnchor
+                    href="/product/2"
+                    navigate={[Function]}
+                  >
+                    <a
+                      href="/product/2"
+                      onClick={[Function]}
+                    >
+                      <img
+                        alt="products"
+                        className="product-image"
+                        src="/images/d1.jpg"
+                      />
+                    </a>
+                  </LinkAnchor>
+                </Link>
+                <div
+                  className="product-name"
+                >
+                  <Link
+                    to="/product/2"
+                  >
+                    <LinkAnchor
+                      href="/product/2"
+                      navigate={[Function]}
+                    >
+                      <a
+                        href="/product/2"
+                        onClick={[Function]}
+                      >
+                        Slim Shirts
+                      </a>
+                    </LinkAnchor>
+                  </Link>
+                </div>
+                <div
+                  className="product-brand"
+                >
+                  Levis
+                </div>
+                <div
+                  className="product-price"
+                >
+                  100
+                </div>
+                <div
+                  className="product-rating"
+                >
+                  3.5
+                   stars (
+                  10
+                   Reviews)
+                </div>
+              </div>
+            </li>
+          </ul>
+        </styled.ul>
+      </Home>
+    </Router>
+  </BrowserRouter>
+</Provider>
+`;

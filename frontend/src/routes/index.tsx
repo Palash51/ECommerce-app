@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 
 import  Home from './Home'
 import Product from './Product';
@@ -16,7 +16,6 @@ function Base() {
   }
 
   return (
-    <BrowserRouter>
     <div className="grid-container">
         <header className="header">
             <div className="brand">
@@ -53,7 +52,6 @@ function Base() {
             All right reserved.
         </footer>
     </div>
-    </BrowserRouter>
   );
 }
 

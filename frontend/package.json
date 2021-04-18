@@ -17,6 +17,7 @@
     "@types/react-dom": "^16.9.8",
     "@types/react-redux": "^7.1.9",
     "@types/react-router-dom": "^5.1.5",
+    "@types/redux-mock-store": "^1.0.2",
     "@types/styled-components": "^5.1.2",
     "axios": "^0.20.0",
     "cra-template-typescript": "1.0.3",
@@ -30,6 +31,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "redux": "^4.0.5",
+    "redux-mock-store": "^1.5.4",
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.1.1",
     "typesafe-actions": "^5.1.0",
@@ -64,11 +66,6 @@
   "jest": {
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
-    ],
-    "collectCoverageFrom": [
-      "src/**/*.ts",
-      "src/**/*.js",
-      "!src/index.ts"
     ],
     "coverageReporters": [
       "text"
