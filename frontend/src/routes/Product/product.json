@@ -1,0 +1,11 @@
+{
+    "brand": "Nike",
+    "category": "Shirts",
+    "countInStock": 6,
+    "image": "/images/d1.jpg",
+    "name": "Slim Shirts",
+    "numReviews": 10,
+    "price": 60,
+    "rating": 4.5,
+    "_id": "1"
+}

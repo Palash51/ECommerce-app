@@ -81,7 +81,7 @@ const CartButtonWrapper = styled.button`
 `;
 
 
-function Product(props:IProps){
+const Product = (props:IProps) => {
     const [qty, setQty] =  useState(1);
     const productDetails =  useSelector((state:RootState) => state.productDetails);
     const { product, loading, error} = productDetails;
@@ -116,7 +116,7 @@ function Product(props:IProps){
                 <img src={product?.image} alt="product" ></img>
             </ProductImageWrapper>
             <ProductInfoWrapper>
-                <ul>
+                <ul data-testid="product-details">
                     <li>
                         <h4>{product?.name}</h4>
                     </li>
@@ -141,12 +141,12 @@ function Product(props:IProps){
                             Price: {product?.price}
                         </li>
                         <li>
-                            Status: {product.countInStock > 0 ? "In Stock" : "Out of stock"}
+                            Status: {product?.countInStock > 0 ? "In Stock" : "Out of stock"}
                         </li>
                         <li>
                             {/* TODO: Need to remove downlevelIteration */}
                             Quantity: <select value={qty} onChange={(e) => updateQuantity(e)} >
-                            {[...Array(product.countInStock).keys()].map((x) => (
+                            {[...Array(product?.countInStock).keys()].map((x) => (
                             <option key={x + 1} value={x + 1}>
                                 {x + 1}
                             </option>
@@ -155,7 +155,7 @@ function Product(props:IProps){
                         </li>
                         
                         <li style={{ display:'flex', flexDirection: 'column'}}>
-                        {product.countInStock > 0 &&  <CartButtonWrapper onClick={handleAddToCart}>Add to cart</CartButtonWrapper>}
+                        {product?.countInStock > 0 &&  <CartButtonWrapper onClick={handleAddToCart}>Add to cart</CartButtonWrapper>}
                         </li>
                         
                     </ul>
