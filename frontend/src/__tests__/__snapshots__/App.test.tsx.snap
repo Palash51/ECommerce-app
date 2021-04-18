@@ -1,23 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[` 1`] = `
-<Provider
-  store={
-    Object {
-      "dispatch": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-      Symbol(observable): [Function],
-    }
-  }
->
-  <BrowserRouter>
-    <Base />
-  </BrowserRouter>
-</Provider>
-`;
-
 exports[`App component Should match snapshot 1`] = `
 <Provider
   store={

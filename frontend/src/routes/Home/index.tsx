@@ -30,7 +30,7 @@ const Home: FC = () => {
                 <ProductWrapper>
                     {
                         products.map((product: IProduct) =>
-                            <li style={{ listStyleType: "none" }} key={product._id}>
+                            <li style={{ listStyleType: "none" }} key={product._id} data-testid="products-list">
                                 <div className="product">
                                     <Link to={`/product/${product._id}`} href="!#">
                                         <img className="product-image" src={product.image} alt="products" />

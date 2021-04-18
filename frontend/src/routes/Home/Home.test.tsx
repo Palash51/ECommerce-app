@@ -39,7 +39,7 @@ describe('Home component', () => {
             </BrowserRouter>
             </Provider>,
         )
-        expect(wrapper.find('li')).toHaveLength(2)
+        expect(wrapper.find('[data-testid="products-list"]')).toHaveLength(2)
     })    
 })
 
