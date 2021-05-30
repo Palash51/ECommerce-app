@@ -1,4 +1,5 @@
-const data = {
+
+export default {
     products: [
         {
             _id: '1',
@@ -35,19 +36,3 @@ const data = {
         },
 ]
 }
-
-var express = require("express");
-const app = express()
-
-app.post("/api/products", (req, res) =>{
-    res.send(data.products)
-})
-
-app.post("/api/products/:id", (req, res) =>{
-    const productId = req.params.id;
-    const product = data.products.find(x => x._id === productId);
-    product ? res.send(product) : res.status(404).send({ msg : "Product Not Found." })
-    
-})
-
-app.listen(5000, () => {console.log("Server started at http://localhost:5000") })
